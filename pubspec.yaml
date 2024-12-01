@@ -67,9 +67,7 @@ flutter:
   uses-material-design: true
 
   assets:
-      - assets/der.txt
-      - assets/die.txt
-      - assets/das.txt
+      - assets/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

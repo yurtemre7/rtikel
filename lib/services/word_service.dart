@@ -19,6 +19,25 @@ class WordService {
     return words;
   }
 
+  Future<List<GermanWord>> loadB1Words() async {
+    List<GermanWord> words = [];
+
+    String b1Words = await rootBundle.loadString('assets/b1.txt');
+
+    words.addAll(_parseWordsDelim(b1Words));
+
+    words.shuffle();
+    return words;
+  }
+
+  List<GermanWord> _parseWordsDelim(String content) {
+    return content.split('\n').map((line) {
+      var parts = line.trim().split(" ");
+      assert(parts.length == 2);
+      return GermanWord(word: parts.last, article: parts.first);
+    }).toList();
+  }
+
   List<GermanWord> _parseWords(String content, String article) {
     return content
         .split('\n')
