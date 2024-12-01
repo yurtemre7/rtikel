@@ -35,7 +35,11 @@ class ArticleButtons extends ConsumerWidget {
 
     await showShadDialog(
       context: context,
+      variant: ShadDialogVariant.alert,
       builder: (context) => ShadDialog.alert(
+        radius: BorderRadius.circular(12),
+        removeBorderRadiusWhenTiny: false,
+        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.9),
         actionsMainAxisSize: MainAxisSize.min,
         title: Text(isCorrect ? 'korrekt!' : 'inkorrekt'),
         description: Padding(
@@ -50,13 +54,13 @@ class ArticleButtons extends ConsumerWidget {
                     word.article,
                     style: const TextStyle(
                       decoration: TextDecoration.underline,
-                      fontSize: 32,
+                      fontSize: 26,
                     ),
                   ),
                   Text(
                     ' ${word.word}',
                     style: const TextStyle(
-                      fontSize: 32,
+                      fontSize: 26,
                     ),
                   ),
                 ],
@@ -64,14 +68,6 @@ class ArticleButtons extends ConsumerWidget {
             ),
           ),
         ),
-        actions: [
-          ShadButton(
-            child: const Text('weiter'),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ],
         expandActionsWhenTiny: false,
       ),
     );
